@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Users;
 class UserController extends Controller
@@ -48,6 +49,18 @@ class UserController extends Controller
         'message' => 'User successfully created.',
         'data' => $user
     ], 201);
+    }
+    public function login(Request $request){
+        $credentials = $request->validate([
+            "email" => 'required|email',
+            "password" => 'required|string|min:0'
+        ]);
+        if(Auth::attempt($credentials)){
+            $user = Auth::user();
+            return response()->json(["message" => "Login successfully", "data" => $user],200);
+        }else{
+            return response()->json(["message" => "Invalid credentials"],400);
+        }
     }
 
 }

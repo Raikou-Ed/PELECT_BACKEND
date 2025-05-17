@@ -4,32 +4,32 @@ import { Routes, Route } from "react-router-dom";
 
 
 
-import DefaultLayout from "../layouts/DefaultLayout";
-import SpecialLayout from "../layouts/SpecialLayout";
-import NoneLayout from "../layouts/NoneLayout";
-import CustomerLayout from "../layouts/CustomerLayout";
-import AdminLayout from "../layouts/AdminLayout";
+import DefaultLayout from "../layout/DefaultLayout";
+import SpecialLayout from "../layout/SpecialLayout";
+import NoneLayout from "../layout/NoneLayout";
+import CustomerLayout from "../layout/CustomerLayout";
+import AdminLayout from "../layout/AdminLayout";
 
 
-import Home from "../pages/Home";
-import ContactUs from "../pages/ContactUs";
-import AboutUs from "../pages/AboutUs";
-import Feedback from "../pages/Feedback";
-import Login from "../pages/Login";
-import CreateAccount from "../pages/CreateAccount";
-import ForgotPassword from "../pages/ForgotPassword";
-import CreateProfile from "../pages/CreateProfile";
-import ServiceProfile from "../pages/ServiceProfile";
-import AvailableWeek from "../pages/AvailableWeek";
-import BookingRequest from "../pages/BookingRequest";
-import CreateAccountCustomer from "../pages/CreateAccountCustomer";
-import CustomerProfile from "../pages/CustomerProfile";
-import BookAppointment from "../pages/BookAppointment";
-import UserManagement from "../pages/UserManagement";
-import AdmitBooking from "../pages/AdmitBooking";
-import ApproveProvider from "../pages/ApproveProvider";
-import SaveChangesCustomer from "../pages/SaveChangesCustomer";
-import SaveChangesProvider from "../pages/SaveChangesProvider";
+import Home from "../page/Home";
+import ContactUs from "../page/ContactUs";
+import AboutUs from "../page/AboutUs";
+import Feedback from "../page/Feedback";
+import Login from "../page/Login";
+import CreateAccount from "../page/CreateAccount";
+import ForgotPassword from "../page/ForgotPassword";
+import CreateProfile from "../page/CreateProfile";
+import ServiceProfile from "../page/ServiceProfile";
+import AvailableWeek from "../page/AvailableWeek";
+import BookingRequest from "../page/BookingRequest";
+import CreateAccountCustomer from "../page/CreateAccountCustomer";
+import CustomerProfile from "../page/CustomerProfile";
+import BookAppointment from "../page/BookAppointment";
+import UserManagement from "../page/UserManagement";
+import AdmitBooking from "../page/AdmitBooking";
+import ApproveProvider from "../page/ApproveProvider";
+import SaveChangesCustomer from "../page/SaveChangesCustomer";
+import SaveChangesProvider from "../page/SaveChangesProvider";
 
 
 const AppRoutes = () => {

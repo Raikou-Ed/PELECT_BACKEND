@@ -1,30 +1,30 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+import * as send from '../js/send.js';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-
-    const mockUsers = {
-      admin: { email: 'admin@example.com', password: 'admin123', role: 'admin' },
-      client: { email: 'client@example.com', password: 'client123', role: 'client' },
-      worker: { email: 'worker@example.com', password: 'worker123', role: 'worker' }
+    const handleLogin = async () => {
+      const credentials = {
+        "email": email,
+        "password" : password
+      }
+      const response = await send.login(credentials);
+      if (response.message.includes("successfully")) {
+        if (response.data.user_is_cus === true) {
+          navigate('/CreateAccountCustomer'); 
+        } else {
+          navigate('/UserManagement'); 
+        }
+      } else {
+        setError(response.message);
+      }
     };
-
-    if (email === mockUsers.admin.email && password === mockUsers.admin.password) {
-      navigate('/UserManagement'); 
-    } else if (email === mockUsers.client.email && password === mockUsers.client.password) {
-      navigate('/CreateAccountCustomer'); 
-    } else if (email === mockUsers.worker.email && password === mockUsers.worker.password) {
-      navigate('/CreateProfile'); 
-    } else {
-      setError('Invalid credentials');
-    }
-  };
+  
+    
 
   return (
     <div className="relative w-full h-screen">
