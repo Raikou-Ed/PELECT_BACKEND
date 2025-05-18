@@ -8,6 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Users extends Authenticatable
 {
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+    
     protected $table = 'users';
     protected $primaryKey = 'id';
     protected $fillable = [
