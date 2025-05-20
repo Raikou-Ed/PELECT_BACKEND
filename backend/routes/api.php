@@ -19,4 +19,8 @@ Route::apiResource('revenues', RevenueController::class);
 Route::apiResource('bookings', BookingController::class);
 Route::apiResource('appointments', AppointmentController::class);
 Route::apiResource('booking-histories', BookingHistoryController::class);
+Route::middleware(['auth:sanctum', 'role:user'])->get('/dashboard/user', [UserDashboardController::class, 'index']);
+Route::middleware(['auth:sanctum', 'role:provider'])->get('/dashboard/provider', [ProviderDashboardController::class, 'index']);
+Route::middleware(['auth:sanctum', 'role:admin'])->get('/dashboard/admin', [AdminDashboardController::class, 'index']);
+
 ?>
