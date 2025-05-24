@@ -8,8 +8,13 @@ use App\Http\Controllers\RevenueController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BookingHistoryController;
+use App\Http\Controllers\SignupController;
+use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\ProviderDashboardController;
+use App\Http\Controllers\AdminDashboardController;
 
 
+Route::post('/register', [SignupController::class, 'register']);
 Route::get('/users', [UserController::class, 'getAllUsers']);
 Route::post('/users', [UserController::class, 'createUsers']);
 Route::post('/login', [UserController::class, 'login']);
