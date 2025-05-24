@@ -28,4 +28,17 @@ Route::middleware(['auth:sanctum', 'role:user'])->get('/dashboard/user', [UserDa
 Route::middleware(['auth:sanctum', 'role:provider'])->get('/dashboard/provider', [ProviderDashboardController::class, 'index']);
 Route::middleware(['auth:sanctum', 'role:admin'])->get('/dashboard/admin', [AdminDashboardController::class, 'index']);
 
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/dashboard/user', [UserDashboardController::class, 'index']);
+    Route::get('/dashboard/provider', [ProviderDashboardController::class, 'index']);
+
+    Route::prefix('admin')->group(function () {
+        Route::get('/dashboard', [AdminDashboardController::class, 'index']);
+        Route::get('/users', [AdminController::class, 'users']);
+        Route::get('/bookings', [AdminController::class, 'bookings']);
+        Route::patch('/providers/{id}/toggle-approval', [AdminController::class, 'toggleProviderApproval']);
+    });
+});
+
 ?>

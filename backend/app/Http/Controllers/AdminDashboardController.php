@@ -9,6 +9,26 @@ use App\Models\Revenue;
 
 class AdminDashboardController extends Controller
 {
+
+    public function users()
+    {
+        return response()->json(User::all());
+    }
+
+    public function bookings()
+    {
+        return response()->json(Booking::with(['user', 'provider'])->get());
+    }
+
+    public function toggleProviderApproval($id)
+    {
+        $provider = User::findOrFail($id);
+        $provider->is_approved = !$provider->is_approved;
+        $provider->save();
+
+        return response()->json(['status' => 'updated', 'provider' => $provider]);
+    }
+
     public function index()
     {
         $userCount = User::where('role', 'user')->count();

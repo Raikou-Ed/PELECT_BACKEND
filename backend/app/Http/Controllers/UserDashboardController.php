@@ -5,22 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 
 class UserDashboardController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $user = $request->user();
+        $user = Auth::user();
 
         $bookings = Booking::where('user_id', $user->id)->get();
         $reviews = Review::where('user_id', $user->id)->get();
-        $upcoming = $bookings->filter(fn($b) => in_array($b->status, ['pending', 'accepted']));
 
         return response()->json([
-            'user' => $user->only(['name', 'email', 'location']),
+            'user' => $user,
             'bookingCount' => $bookings->count(),
-            'upcoming' => $upcoming->values(),
-            'reviews' => $reviews,
+            'upcomingBookings' => $bookings->whereIn('status', ['pending', 'accepted']),
+            'reviews' => $reviews
         ]);
     }
 }
